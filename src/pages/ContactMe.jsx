@@ -9,13 +9,18 @@ const ContactMe = () => {
         
         {/* Contact Form */}
         <div className="md:w-1/2 w-full max-w-md">
-          <form className="bg-white shadow-lg rounded-lg p-8">
-            
+          <form 
+            action="https://formspree.io/f/xqakegbg" 
+            method="POST" 
+            className="bg-white shadow-lg rounded-lg p-8"
+          >
             <div className="mb-4">
               <label htmlFor="name" className="block text-lg font-medium mb-2">Name</label>
               <input
                 type="text"
+                name="name"
                 id="name"
+                required
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B1C98D]"
                 placeholder="Your name"
               />
@@ -25,7 +30,9 @@ const ContactMe = () => {
               <label htmlFor="email" className="block text-lg font-medium mb-2">Email</label>
               <input
                 type="email"
+                name="email"
                 id="email"
+                required
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B1C98D]"
                 placeholder="Your email"
               />
@@ -34,7 +41,9 @@ const ContactMe = () => {
             <div className="mb-4">
               <label htmlFor="message" className="block text-lg font-medium mb-2">Message</label>
               <textarea
+                name="message"
                 id="message"
+                required
                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#B1C98D]"
                 rows="5"
                 placeholder="Your message"
@@ -57,10 +66,10 @@ const ContactMe = () => {
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
           <p className="mb-2">
-            <strong>Email:</strong> thandekaportiap05@gmail.com
+            <strong>Email:</strong> yourname@example.com
           </p>
           <p className="mb-2">
-            <strong>Phone:</strong> +27 8263 25121
+            <strong>Phone:</strong> +27 123 456 789
           </p>
           <p className="mb-2">
             <strong>Location:</strong> South Africa
