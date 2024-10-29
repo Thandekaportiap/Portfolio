@@ -27,9 +27,7 @@ const Footer = () => {
                 </a>
             </div>
 
-            <p className="text-center  font-medium text-2xl">
-                &copy; 2024 TPP - All rights reserved.
-            </p>
+         
         </footer>
     );
 };
