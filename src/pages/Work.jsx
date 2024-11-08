@@ -4,6 +4,7 @@ const sneakersImg = require('../assets/desktop-design.jpg');
 const snapLandingImg = require('../assets/desktop-design (2).jpg');
 const weatherAppImg = require('../assets/react-weather-app-screenshot.png');
 const todoAppImg = require('../assets/todoApp.png');
+const recipe = require('../assets/download.png');
 
 const Work = () => {
   return (
@@ -93,9 +94,32 @@ const Work = () => {
             Learn More
           </a>
         </div>
-        <p className="my-8">Built with Raact JS, Tailwind CSS, Sqlite and Express</p>
+        <p className="my-8">Built with React JS, Tailwind CSS, Sqlite and Express</p>
       </div>
-     
+     </div>
+
+      {/* Recipe App Project */}
+    <div className="flex flex-col md:flex-row items-center m-2">
+    <div className="md:w-1/2 hidden md:block">
+        <img src={recipe} alt="recipe app" className="w-full h-auto rounded-lg shadow-lg" />
+      </div>
+      <div className="md:w-1/2 text-center md:text-left mt-8 md:mt-0 ml-4 p-2">
+        <div className="project-description">
+          <h2 className="text-3xl font-bold mb-5">Recipe App</h2>
+          <p className="text-lg mb-5">
+          A user-friendly recipe app that allows users to browse, save, and share recipes. It features a searchable database, personalized collections, and detailed cooking instructions with nutritional info.
+          </p>
+          <a
+            href="https://task-9-online-recipe.vercel.app/"
+            className="btn btn-branding-outline bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors mb-4"
+          >
+            Learn More
+          </a>
+        </div>
+        <p className="my-8">Built with React JS, Tailwind CSS, JSON server </p>
+      </div>
+
+
     </div>
   </div>
 );

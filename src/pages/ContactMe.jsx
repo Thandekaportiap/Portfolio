@@ -66,10 +66,10 @@ const ContactMe = () => {
             I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.
           </p>
           <p className="mb-2">
-            <strong>Email:</strong> yourname@example.com
+            <strong>Email:</strong> thandekaportiap05@gmail.com
           </p>
           <p className="mb-2">
-            <strong>Phone:</strong> +27 123 456 789
+            <strong>Phone:</strong> +27 826325121
           </p>
           <p className="mb-2">
             <strong>Location:</strong> South Africa

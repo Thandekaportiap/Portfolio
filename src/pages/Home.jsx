@@ -19,7 +19,7 @@ const Home = () => {
         </div>
       </div>
 
-      <a href="#about-me" className="absolute bottom-8 text-xl mt-80">
+      <Link to="/about" className="absolute bottom-8 text-xl mt-80">
         <svg
           width="80"
           height="80"
@@ -35,7 +35,7 @@ const Home = () => {
             fill="#FFFFFF"
           />
         </svg>
-      </a>
+      </Link>
     </section>
   );
 };
