@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { collection, doc, getDoc, increment, setDoc, updateDoc } from 'firebase/firestore';
+import { db } from '../components/Firebase';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const projects = [
   {
+    id: 'hotel-app',
     title: 'Hotel Booking App',
     description:
       'A feature-rich hotel booking application built with React.js, Redux, and Firebase. This app enables administrators to manage accommodations and bookings while allowing customers to browse, book rooms, and make secure payments.',
@@ -11,6 +16,7 @@ const projects = [
     link: 'https://hotel-app-alpha.vercel.app/',
   },
   {
+    id: 'snap-landing-page',
     title: 'Snap Landing Page',
     description:
       'Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.',
@@ -20,6 +26,7 @@ const projects = [
     link: 'https://dropdownsection.netlify.app/',
   },
   {
+    id: 'weather-app',
     title: 'Weather App',
     description:
       'A dynamic weather application developed using HTML, CSS, JavaScript and integrated with the SheCodes Weather API. This app allows users to search for real-time weather updates and 5-day forecasts for any location worldwide.',
@@ -29,6 +36,7 @@ const projects = [
     link: 'https://weatherappbytpp.netlify.app/',
   },
   {
+    id: 'todo-list-app',
     title: 'Todo List App',
     description:
       'User-friendly application designed to help you manage your tasks efficiently. Easily create, edit, and delete tasks.',
@@ -38,6 +46,7 @@ const projects = [
     link: 'https://to-do-list-app-wpzq.vercel.app/',
   },
   {
+      id: 'recipe-app',
     title: 'Recipe App',
     description:
       'A user-friendly recipe app that allows users to browse, save, and share recipes. It features a searchable database, personalized collections, and detailed cooking instructions with nutritional info.',
@@ -47,6 +56,7 @@ const projects = [
     link: 'https://task-9-online-recipe.vercel.app/',
   },
   {
+    id: 'shop-easy',
     title: 'Shop-easy',
     description:
       'A powerful e-commerce platform with features like product management, user authentication, secure payments, and cart functionality.',
@@ -58,38 +68,143 @@ const projects = [
 ];
 
 const Work = () => {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      once: true, 
+    });
+  }, []);
+
+  const [likes, setLikes] = useState({});
+  const [comments, setComments] = useState({});
+  const [newComment, setNewComment] = useState('');
+
+  useEffect(() => {
+    AOS.init({ duration: 1000, once: true });
+    const fetchData = async () => {
+      for (let project of projects) {
+        const docRef = doc(db, 'projects', project.id);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setLikes((prev) => ({ ...prev, [project.id]: data.likes || 0 }));
+          setComments((prev) => ({ ...prev, [project.id]: data.comments || [] }));
+        }
+      }
+    };
+    fetchData();
+  }, []);
+
+  const handleLike = async (projectId) => {
+    const docRef = doc(db, 'projects', projectId);
+    await updateDoc(docRef, { likes: increment(1) });
+    setLikes((prev) => ({ ...prev, [projectId]: (prev[projectId] || 0) + 1 }));
+  };
+
+  const handleComment = async (projectId) => {
+    if (!newComment.trim()) return;
+    const docRef = doc(db, 'projects', projectId);
+    const projectDoc = await getDoc(docRef);
+    const projectData = projectDoc.exists() ? projectDoc.data() : {};
+    const updatedComments = [...(projectData.comments || []), newComment];
+    await setDoc(docRef, { ...projectData, comments: updatedComments });
+    setComments((prev) => ({ ...prev, [projectId]: updatedComments }));
+    setNewComment('');
+  };
+
   return (
     <div className="container px-4 py-12 mx-auto">
-      <p className="mb-12 text-3xl font-semibold text-center">My Projects</p>
-      {projects.map((project, index) => (
-        <div
-          key={index}
-          className={`flex flex-col items-center mb-12 ${
-            index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-          }`}
-        >
-          <div className="hidden md:w-1/2 md:block">
-            <img
-              src={project.image}
-              alt={project.alt}
-              className="w-full h-auto rounded-lg shadow-lg"
-            />
-          </div>
-          <div className="p-2 mt-8 text-center md:w-1/2 md:text-left md:mt-0">
-            <h2 className="mb-5 text-3xl font-bold">{project.title}</h2>
-            <p className="mb-5 text-lg">{project.description}</p>
-            <a
-              href={project.link}
-              className="btn btn-branding-outline bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors"
-            >
-              Learn More
-            </a>
-            <p className="my-8">Built with {project.stack}</p>
+    <p className="mb-12 text-3xl font-semibold text-center">My Projects</p>
+    {projects.map((project, index) => (
+      <div
+        key={project.id}
+        className={`flex flex-col items-center mb-12 ${
+          index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
+        }`}
+        data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+      >
+        <div className="hidden md:w-1/2 md:block">
+          <img
+            src={project.image}
+            alt={project.alt}
+            className="w-full h-auto rounded-lg shadow-lg"
+            data-aos="zoom-in"
+          />
+        </div>
+        <div className="p-4 mt-8 text-center md:w-1/2 md:text-left md:mt-0">
+          <h2 className="mb-5 text-3xl font-bold">{project.title}</h2>
+          <p className="mb-5 text-lg">{project.description}</p>
+          <a
+            href={project.link}
+            className="btn btn-branding-outline bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors"
+          >
+            Learn More
+          </a>
+          <p className="my-8">Built with {project.stack}</p>
+          <div className="flex items-center gap-4">
+          <div>
+  <button
+    onClick={() => handleLike(project.id)}
+    className="flex items-center px-4 py-2 bg-red-500 text-white rounded hover:bg-blue-600"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="w-5 h-5 mr-1"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth={2}
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+      />
+    </svg>
+    Like ({likes[project.id] || 0})
+  </button>
+</div>
+<div className="mt-4 flex items-start gap-4">
+  <textarea
+    value={newComment}
+    onChange={(e) => setNewComment(e.target.value)}
+    placeholder="Add a comment..."
+    className="flex-1 px-4  border rounded-md"
+  />
+  <button
+    onClick={() => handleComment(project.id)}
+    className="flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
+  >
+    <svg
+      width="1em"
+      height="1em"
+      fill="currentColor"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fillRule="evenodd"
+        d="M15.854.146a.5.5 0 0 1 .11.54L13.026 8.03A4.5 4.5 0 0 0 8 12.5c0 .5 0 1.5-.773.36l-1.59-2.498L.644 7.184l-.002-.001-.41-.261a.5.5 0 0 1 .083-.886l.452-.18.001-.001L15.314.035a.5.5 0 0 1 .54.111M6.637 10.07l7.494-7.494.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154z"
+      />
+      <path
+        fillRule="evenodd"
+        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-1.646a.5.5 0 0 1-.722-.016l-1.149-1.25a.5.5 0 1 1 .737-.676l.28.305V11a.5.5 0 0 1 1 0v1.793l.396-.397a.5.5 0 0 1 .708.708z"
+      />
+    </svg>
+  </button>
+</div>
+
+            {/* <ul className="mt-4 space-y-2">
+              {comments[project.id]?.map((comment, idx) => (
+                <li key={idx} className="p-2 bg-gray-100 rounded">
+                  {comment}
+                </li>
+              ))}
+            </ul> */}
           </div>
         </div>
-      ))}
-    </div>
-  );
+      </div>
+    ))}
+  </div>
+);
 };
-
 export default Work;
