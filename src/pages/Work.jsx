@@ -164,42 +164,9 @@ const Work = () => {
     Like ({likes[project.id] || 0})
   </button>
 </div>
-<div className="mt-4 flex items-start gap-4">
-  <textarea
-    value={newComment}
-    onChange={(e) => setNewComment(e.target.value)}
-    placeholder="Add a comment..."
-    className="flex-1 px-4  border rounded-md"
-  />
-  <button
-    onClick={() => handleComment(project.id)}
-    className="flex items-center justify-center px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
-  >
-    <svg
-      width="1em"
-      height="1em"
-      fill="currentColor"
-      viewBox="0 0 16 16"
-    >
-      <path
-        fillRule="evenodd"
-        d="M15.854.146a.5.5 0 0 1 .11.54L13.026 8.03A4.5 4.5 0 0 0 8 12.5c0 .5 0 1.5-.773.36l-1.59-2.498L.644 7.184l-.002-.001-.41-.261a.5.5 0 0 1 .083-.886l.452-.18.001-.001L15.314.035a.5.5 0 0 1 .54.111M6.637 10.07l7.494-7.494.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154z"
-      />
-      <path
-        fillRule="evenodd"
-        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m.354-1.646a.5.5 0 0 1-.722-.016l-1.149-1.25a.5.5 0 1 1 .737-.676l.28.305V11a.5.5 0 0 1 1 0v1.793l.396-.397a.5.5 0 0 1 .708.708z"
-      />
-    </svg>
-  </button>
-</div>
 
-            {/* <ul className="mt-4 space-y-2">
-              {comments[project.id]?.map((comment, idx) => (
-                <li key={idx} className="p-2 bg-gray-100 rounded">
-                  {comment}
-                </li>
-              ))}
-            </ul> */}
+
+           
           </div>
         </div>
       </div>

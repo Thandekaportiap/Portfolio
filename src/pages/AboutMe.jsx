@@ -39,6 +39,12 @@ I thrive in collaborative environments and am always eager to learn new tools an
             >
               See my Projects
             </Link>
+            <Link
+              to="/codetribe"
+              className="btn btn-branding bg-[#B1C98D] hover:bg-lime-700 text-white font-bold py-3 px-5 ml-2 rounded transition duration-300 transform hover:scale-105"
+            >
+              My CodeTribe Journey
+            </Link>
           </div>
         </div>
 

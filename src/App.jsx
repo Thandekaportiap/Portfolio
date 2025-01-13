@@ -6,6 +6,7 @@ import AboutMe from './pages/AboutMe';
 import Contact from './pages/ContactMe';
 import Work from './pages/Work';
 import Footer from './components/Footer';
+import Codetribe from './pages/Codetribe';
 import './App.css'
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
             <Route path="/about" element={<AboutMe />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/codetribe" element={<Codetribe/>} />
             <Route path="*" element={<NoPage />} />
           </Routes>
           <Footer />
