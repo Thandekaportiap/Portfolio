@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
         <>
             {/* Main Navigation Bar */}
-            <nav className='border shadow-[#B1C98D] shadow-md flex justify-between items-center h-20 mx-auto px-5 text-[#C087BF]'>
+            <nav className='border shadow-[#B1C98D] z-50 shadow-md flex justify-between items-center h-20 mx-auto px-5 text-[#C087BF]'>
                <h1 className='text-[27px] font-bold'>TPP</h1>
                 
                 {/* Desktop Navigation Links */}
@@ -57,7 +57,7 @@ const Navbar = () => {
                 </div>
 
                 {/* Mobile Navigation Menu */}
-                <div className={!openNav ? 'left-[0%] fixed top-0 w-[60%] bg-[black] h-full block pl-4 pt-4 ease-in-out duration-500 md:hidden' : "fixed left-[100%] ease-in-out duration-500"}>
+                <div className={!openNav ? 'left-[0%] z-50 fixed top-0 w-[60%] bg-[black] h-full block pl-4 pt-4 ease-in-out duration-500 md:hidden' : "fixed left-[100%] ease-in-out duration-500"}>
                     {/* Logo in Mobile Menu */}
                     <h1 className='text-[27px] font-bold'>TPP</h1>  
                     
