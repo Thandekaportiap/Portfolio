@@ -26,7 +26,7 @@ const Home = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 1 }}
         >
-          Fullstack Developer based in South Africa
+          Full Stack & Mobile Developer, based in South Africa
         </motion.h2>
         <motion.div
           className="mt-10"

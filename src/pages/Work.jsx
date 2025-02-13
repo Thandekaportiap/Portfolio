@@ -3,6 +3,8 @@ import { collection, doc, getDoc, increment, setDoc, updateDoc } from 'firebase/
 import { db } from '../components/Firebase';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const projects = [
   {
@@ -78,6 +80,9 @@ const Work = () => {
   const [likes, setLikes] = useState({});
   const [comments, setComments] = useState({});
   const [newComment, setNewComment] = useState('');
+  const navigate = useNavigate();
+
+
 
   useEffect(() => {
     AOS.init({ duration: 1000, once: true });
@@ -115,6 +120,11 @@ const Work = () => {
   return (
     <div className="container px-4 py-12 mx-auto">
     <p className="mb-12 text-3xl font-semibold text-center">My Projects</p>
+
+    <button className="btn btn-branding-outline bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors mb-4" onClick={() => navigate('/mobilework')}>
+      See a Mobile Project
+    </button>
+
     {projects.map((project, index) => (
       <div
         key={project.id}

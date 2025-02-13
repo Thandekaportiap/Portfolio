@@ -14,7 +14,9 @@ const Navbar = () => {
         <>
             {/* Main Navigation Bar */}
             <nav className='border shadow-[#B1C98D] z-50 shadow-md flex justify-between items-center h-20 mx-auto px-5 text-[#C087BF]'>
-               <h1 className='text-[27px] font-bold'>TPP</h1>
+            <h1 className="text-[27px] font-bold">
+  &lt;<span className="text-lime-500">T</span><span className="text-[#C087BF">P</span><span className="text-lime-500">P</span>/&gt;
+</h1>
                 
                 {/* Desktop Navigation Links */}
                 <ul className='hidden md:flex space-x-6 text-xl font-semibold'>
@@ -59,7 +61,9 @@ const Navbar = () => {
                 {/* Mobile Navigation Menu */}
                 <div className={!openNav ? 'left-[0%] z-50 fixed top-0 w-[60%] bg-[black] h-full block pl-4 pt-4 ease-in-out duration-500 md:hidden' : "fixed left-[100%] ease-in-out duration-500"}>
                     {/* Logo in Mobile Menu */}
-                    <h1 className='text-[27px] font-bold'>TPP</h1>  
+                    <h1 className="text-[27px] font-bold">
+  &lt;<span className="text-lime-500">T</span>P<span className='text-lime-500'>P</span> /&gt; {/* Example styling for 'T' */}
+</h1>  
                     
                     {/* Mobile Navigation Links */}
                     <ul className='block pt-8 space-y-4'>
@@ -70,7 +74,7 @@ const Navbar = () => {
                                 Home
                             </NavLink>
                         </li>
-                        <li className='border-b border-[#B1C98D]'>
+                        <li className='border-b border-[#d9dbd7]'>
                             <NavLink to="/about" 
                                 className={({ isActive }) => (isActive ? 'text-[#B1C98D]' : '')}
                             >
