@@ -67,6 +67,37 @@ const projects = [
     alt: 'Shop-easy',
     link: 'https://shopeasy-io.vercel.app/',
   },
+  {
+    id: 'card-guessing-game',
+    title: 'Card Guessing Game',
+    description:
+      'An interactive memory game where players flip cards to find matching pairs. Built with Node.js and EJS for dynamic rendering.',
+    stack: 'Node.js, Express.js, EJS, JavaScript, CSS',
+    image: require('../assets/card-game.png'),
+    alt: 'Card Guessing Game',
+    link: 'https://task-16-guessing-game.onrender.com/',
+},
+{
+  id: 'shopping-list-app',
+  title: 'Shopping List App',
+  description:
+    'A feature-rich shopping list application with CRUD functionality, search and filter options, multiple list support, and offline access.',
+  stack: 'React.js, Redux, Tailwind CSS, JSON Server',
+  image: require('../assets/shopping-list.png'),
+  alt: 'Shopping List App',
+  link: 'https://shopping-list-gray-theta.vercel.app/',
+},
+{
+  id: 'react-weather-app',
+  title: 'React Weather App',
+  description:
+    'A modern weather application that provides real-time weather updates, forecasts, and temperature details using OpenWeather API.',
+  stack: 'React.js, Tailwind CSS, OpenWeather API',
+  image: require('../assets/react-weather.png'),
+  alt: 'Weather App',
+  link: 'https://react-weather-app-swart-chi.vercel.app/',
+},
+
 ];
 
 const Work = () => {
