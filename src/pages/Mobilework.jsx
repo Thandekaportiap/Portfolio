@@ -15,7 +15,7 @@ const projects = [
     stack: "React Native, Expo",
     images: [
       require("../assets/Screenshot (1).png"),
-      require("../assets/hotel app.png"),
+      // require("../assets/hotel app.png"),
     ],
     link: "https://github.com/Thandekaportiap/BirthdayCardApp",
   },
@@ -89,52 +89,66 @@ const Mobilework = () => {
 
   return (
     <div className="container px-4 py-12 mx-auto">
-      <p className="mb-12 text-2xl sm:text-3xl font-semibold text-center">
-        My Mobile Projects
-      </p>
-      {projects.map((project, index) => (
-        <div
-          key={project.id}
-          className={`flex flex-col lg:flex-row items-center mb-12 ${
-            index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-          }`}
-          data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
-        >
-          <div className="w-full lg:w-1/2">
-            <Swiper
-              navigation={true}
-              modules={[Navigation]}
-              className="rounded-lg shadow-lg"
-            >
-              {project.images.map((image, idx) => (
-                <SwiperSlide key={idx}>
-                  <img
-                    src={image}
-                    alt={`${project.title} screenshot ${idx + 1}`}
-                    className="w-full h-auto object-cover"
-                  />
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </div>
-          <div className="p-4 mt-6 lg:mt-0 lg:w-1/2 text-center lg:text-left">
-            <h2 className="mb-4 text-2xl sm:text-3xl font-bold">
-              {project.title}
-            </h2>
-            <p className="mb-4 text-base sm:text-lg">{project.description}</p>
-            <a
-              href={project.link}
-              className="inline-block bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-all"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on GitHub
-            </a>
-            <p className="mt-6 text-sm sm:text-base">Built with {project.stack}</p>
-          </div>
+    <p className="mb-12 text-2xl sm:text-3xl font-semibold text-center">
+      My Mobile Projects
+    </p>
+    {projects.map((project, index) => (
+      <div
+        key={project.id}
+        className={`flex flex-col lg:flex-row items-center mb-12 ${
+          index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+        }`}
+        data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+      >
+        <div className="w-full lg:w-1/2">
+          <Swiper
+            navigation={true}
+            modules={[Navigation]}
+            className="rounded-lg shadow-lg"
+            breakpoints={{
+              320: {
+                slidesPerView: 1,  // 1 image per slide on small screens
+                spaceBetween: 10,  // Small space between images
+              },
+              768: {
+                slidesPerView: 2,  // 2 images per slide on medium screens
+                spaceBetween: 20,
+              },
+              1024: {
+                slidesPerView: 3,  // 3 images per slide on large screens
+                spaceBetween: 30,
+              },
+            }}
+          >
+            {project.images.map((image, idx) => (
+              <SwiperSlide key={idx}>
+                <img
+                  src={image}
+                  alt={`${project.title} screenshot ${idx + 1}`}
+                  className="w-full h-auto object-cover rounded-lg"
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-      ))}
-    </div>
+        <div className="p-4 mt-6 lg:mt-0 lg:w-1/2 text-center lg:text-left">
+          <h2 className="mb-4 text-2xl sm:text-3xl font-bold">
+            {project.title}
+          </h2>
+          <p className="mb-4 text-base sm:text-lg">{project.description}</p>
+          <a
+            href={project.link}
+            className="inline-block bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-all"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View on GitHub
+          </a>
+          <p className="mt-6 text-sm sm:text-base">Built with {project.stack}</p>
+        </div>
+      </div>
+    ))}
+  </div>
   );
 };
 
