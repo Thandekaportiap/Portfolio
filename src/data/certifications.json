@@ -1,0 +1,46 @@
+[
+    {
+      "title": "Getting Started with Node.js",
+      "issuer": "Simplilearn",
+      "date": "November 2024",
+      "link": "https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiIxNzQ2IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvNzU0ODEzM181NDE0ODI0MTczMTMyMTYxODg4OC5wbmciLCJ1c2VybmFtZSI6IlRoYW5kZWthIFBvcnRpYSAgTWF6aWJ1a28ifQ%3D%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F4236%2FGetting-started-with-NodeJS%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1427609974640885042&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FVd450DHYNC68o9k%2ByrytKTUstKsrMS49PKsovL04tsvUBqkpN8cwDAEcfN9hBAAAA",
+      "description": "Covers Node.js framework, asynchronous programming, building HTTP servers, Express.js, Socket.IO, and unit testing."
+    },
+        {
+          "title": "SheCodes Basics",
+          "issuer": "SheCodes",
+          "date": "October 2023",
+          "link": "https://www.shecodes.io/certificates/ab5003193ef724f42b99073debec7f58",
+          "description": "Covers the fundamentals of web development, including HTML, CSS, and JavaScript."
+        },
+        {
+          "title": "SheCodes Plus",
+          "issuer": "SheCodes",
+          "date": "May 2024",
+          "link": "https://www.shecodes.io/certificates/33d3e24ebef31509a6c23428b74777d9",
+          "description": "Focuses on more advanced web development topics, including React, APIs, and project deployment."
+        },
+        {
+          "title": "SheCodes Responsive",
+          "issuer": "SheCodes",
+          "date": "July 2024",
+          "link": "https://www.shecodes.io/certificates/84cc92e99494f5de186ed3bf38d512c7",
+          "description": "Teaches responsive design principles and how to make websites mobile-friendly."
+        },
+        {
+            "title": "Front-End Development",
+            "issuer": "Africa Agility",
+            "date": "July 2024",
+            "link": "https://credential.certifyme.online/verify/cb5fc0e47648",
+            "description": "Covers front-end development fundamentals including HTML, CSS, and JavaScript for building interactive web pages."
+          },
+          {
+            "title": "Responsive Web Design Certification",
+            "issuer": "freeCodeCamp",
+            "date": "August 2023",
+            "link": "https://www.freecodecamp.org/certification/Thandekaportiap/responsive-web-design",
+            "description": "Focuses on responsive web design, including creating flexible layouts, using media queries, and building mobile-first websites."
+          }
+      
+  ]
+  

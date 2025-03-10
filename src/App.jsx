@@ -8,6 +8,7 @@ import Work from './pages/Work';
 import Footer from './components/Footer';
 import Codetribe from './pages/Codetribe';
 import Mobilework from './pages/Mobilework';
+import Certifications from './components/Certifications';
 import './App.css'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/work" element={<Work />} />
             <Route path="/codetribe" element={<Codetribe/>} />
             <Route path="/mobilework" element={<Mobilework/>} />
+            <Route path="/certifications" element={<Certifications/>} />
             <Route path="*" element={<NoPage />} />
           </Routes>
           <Footer />

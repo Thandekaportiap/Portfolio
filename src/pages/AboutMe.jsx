@@ -83,18 +83,27 @@ const AboutMe = () => {
             <li>🔒 ⭐⭐<span className='text-2xl'>Authentication & Security </span>: JWT authentication, Firebase Auth, and role-based access.</li>
           </ul>
 
-          <Link
-            to="/work"
-            className="btn btn-branding bg-[#B1C98D] hover:bg-lime-700 text-white font-bold py-3 px-5 rounded transition duration-300 transform hover:scale-105"
-          >
-            See my Projects
-          </Link>
-          <Link
-            to="/codetribe"
-            className="btn btn-branding bg-[#B1C98D] hover:bg-lime-700 text-white font-bold py-3 px-5 ml-2 rounded transition duration-300 transform hover:scale-105"
-          >
-            My CodeTribe Journey
-          </Link>
+          <div className="flex flex-wrap gap-3 mt-4 justify-center sm:justify-start">
+  <Link
+    to="/work"
+    className="btn btn-branding bg-[#B1C98D] hover:bg-lime-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105 w-full sm:w-auto text-center"
+  >
+    See my Projects
+  </Link>
+  {/* <Link
+    to="/codetribe"
+    className="btn btn-branding bg-[#B1C98D] hover:bg-lime-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105 w-full sm:w-auto text-center"
+  >
+    My CodeTribe Journey
+  </Link> */}
+  <Link
+    to="/certifications"
+    className="btn btn-branding bg-[#B1C98D] hover:bg-lime-700 text-white font-bold py-2 px-4 rounded transition duration-300 transform hover:scale-105 w-full sm:w-auto text-center"
+  >
+    My Certifications
+  </Link>
+</div>
+
         </div>
       </div>
 
