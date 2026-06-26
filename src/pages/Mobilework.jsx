@@ -48,20 +48,22 @@ const projects = [
     link: "https://github.com/Thandekaportiap/Mobile-Weather-App",
   },
   {
-    id: "mobile-shopping",
-    title: "Mobile Shopping App",
-    description:
-      "A mobile shopping app featuring authentication, Redux for state management, and AsyncStorage for persistent cart data.",
-    stack: "React Native, Expo, Redux, AsyncStorage",
-    images: [
-      require("../assets/Shop1.jpg"),
-      require("../assets/Shop2.jpg"),
-      require("../assets/Shop3.jpg"),
-      require("../assets/Shop4.jpg"),
-      require("../assets/Shop5.jpg"),
-    ],
-    link: "https://github.com/Thandekaportiap/Mobile-Shopping-List-App",
-  },
+  id: "shoplist-app",
+  title: "ShopList — Smart Shopping List Manager",
+  description:
+    "A bold, modern React Native app helping users organise shopping for weddings, funerals and daily errands. Features multiple categorised lists, progress tracking, push notification reminders, offline persistence and cross-list search. Built following a full SDLC process with TypeScript throughout.",
+  stack: "React Native, Expo, TypeScript, Redux Toolkit, AsyncStorage, Expo Notifications, Poppins",
+  images: [
+      require("../assets/ShopList1.jpg"),
+    require("../assets/ShopList2.jpg"),
+    require("../assets/ShopList3.jpg"),
+    require("../assets/ShopList4.jpg"),
+    require("../assets/ShopList5.jpg"),
+    require("../assets/ShopList6.jpg"),
+  ],
+  link: "https://github.com/Thandekaportiap/Mobile_ShoppingList",
+  apk: "https://expo.dev/accounts/thandekaportiap/projects/ShopListApp/builds/63aa37a4-5b95-435e-8448-55dafb233290",
+},
   {
     id: "restaurant-reservation",
     title: "Restaurant Reservation App with Admin Dashboard",
