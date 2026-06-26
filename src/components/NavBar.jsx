@@ -1,105 +1,89 @@
 import React, { useState } from 'react'; 
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai"; 
-import { Link, NavLink } from 'react-router-dom';
-
+import { NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-    const [openNav, setOpenNav] = useState(true);
+    const [openNav, setOpenNav] = useState(false);
 
-    const ToggleNavBar = () => {
-        setOpenNav(!openNav);
-    };
+    const ToggleNavBar = () => setOpenNav(!openNav);
+
+    const navLinks = [
+        { to: "/", label: "Home" },
+        { to: "/about", label: "About Me" },
+        { to: "/work", label: "Work" },
+        { to: "/contact", label: "Contact Me" },
+    ];
+
+    const activeClass = 'text-[#B1C98D]';
+    const inactiveClass = 'hover:text-[#B1C98D] transition-colors duration-200';
 
     return (
         <>
             {/* Main Navigation Bar */}
-            <nav className='border shadow-[#B1C98D] z-50 shadow-md flex justify-between items-center h-20 mx-auto px-5 text-[#C087BF]'>
-            <h1 className="text-[27px] font-bold">
-  &lt;<span className="text-lime-500">T</span><span className="text-[#C087BF">P</span><span className="text-lime-500">P</span>/&gt;
-</h1>
+            <nav className='border shadow-[#B1C98D] shadow-md z-50 flex justify-between items-center h-20 mx-auto px-5 text-[#C087BF]'>
                 
+                {/* Logo */}
+                <h1 className="text-[27px] font-bold">
+                    &lt;<span className="text-lime-500">T</span>
+                    <span className="text-[#C087BF]">P</span>
+                    <span className="text-lime-500">P</span>/&gt;
+                </h1>
+
                 {/* Desktop Navigation Links */}
                 <ul className='hidden md:flex space-x-6 text-xl font-semibold'>
-                    <li>
-                        <NavLink to="/" 
-                            className={({ isActive }) => (isActive ? 'text-[#B1C98D] active:bg-teal-700' : 'hover:text-[#B1C98D]')}
-                        >
-                            Home
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/about" 
-                            className={({ isActive }) => (isActive ? 'text-[#B1C98D] active:bg-teal-700' : 'hover:text-[#B1C98D]')}
-                        >
-                            About
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/work"
-                            className={({ isActive }) => (isActive ? 'text-[#B1C98D] active:bg-teal-700' : 'hover:text-[#B1C98D]')}
-                        >
-                            Work
-                        </NavLink>
-                    </li>
-                    <li>
-                        <NavLink to="/contact"
-                            className={({ isActive }) => (isActive ? 'text-[#B1C98D] active:bg-teal-700' : 'hover:text-[#B1C98D]')}
-                        >
-                            Contact Me
-                        </NavLink>
-                    </li>
+                    {navLinks.map(({ to, label }) => (
+                        <li key={to}>
+                            <NavLink
+                                to={to}
+                                className={({ isActive }) => isActive ? activeClass : inactiveClass}
+                            >
+                                {label}
+                            </NavLink>
+                        </li>
+                    ))}
                 </ul>
-                
-                
-                
-                {/* Hamburger Menu Icon for Mobile */}
-                <div className='fixed md:hidden right-6' onClick={ToggleNavBar}>
-                    {/* Toggle between open and close icons based on openNav state */}
-                    {!openNav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
-                </div>
 
-                {/* Mobile Navigation Menu */}
-                <div className={!openNav ? 'left-[0%] z-50 fixed top-0 w-[60%] bg-[black] h-full block pl-4 pt-4 ease-in-out duration-500 md:hidden' : "fixed left-[100%] ease-in-out duration-500"}>
-                    {/* Logo in Mobile Menu */}
-                    <h1 className="text-[27px] font-bold">
-  &lt;<span className="text-lime-500">T</span>P<span className='text-lime-500'>P</span> /&gt; {/* Example styling for 'T' */}
-</h1>  
-                    
-                    {/* Mobile Navigation Links */}
-                    <ul className='block pt-8 space-y-4'>
-                        <li className='border-b border-[#B1C98D]'>
-                            <NavLink to="/" 
-                                className={({ isActive }) => (isActive ? 'text-[#B1C98D]' : '')}
-                            >
-                                Home
-                            </NavLink>
-                        </li>
-                        <li className='border-b border-[#d9dbd7]'>
-                            <NavLink to="/about" 
-                                className={({ isActive }) => (isActive ? 'text-[#B1C98D]' : '')}
-                            >
-                                About Me
-                            </NavLink>
-                        </li>
-                        <li className='border-b border-[#B1C98D]'>
-                            <NavLink to="/work"
-                                className={({ isActive }) => (isActive ? 'text-[#B1C98D]' : '')}
-                            >
-                                Work
-                            </NavLink>
-                        </li>
-                        <li className='border-b border-[#B1C98D]'>
-                            <NavLink to="/contact"
-                                className={({ isActive }) => (isActive ? 'text-[#B1C98D]' : '')}
-                            >
-                                Contact Me
-                            </NavLink>
-                        </li>
-                    </ul>
-                    
-                   
+                {/* Hamburger Icon */}
+                <div className='md:hidden cursor-pointer' onClick={ToggleNavBar}>
+                    {openNav ? <AiOutlineClose size={20} /> : <AiOutlineMenu size={20} />}
                 </div>
             </nav>
+
+            {/* Backdrop Overlay */}
+            {openNav && (
+                <div
+                    className="fixed inset-0 bg-black/50 z-40 md:hidden"
+                    onClick={ToggleNavBar}
+                />
+            )}
+
+            {/* Mobile Drawer */}
+            <div className={`fixed top-0 left-0 h-full w-[65%] max-w-xs bg-black z-50 pl-6 pt-6
+                transition-transform duration-500 ease-in-out md:hidden
+                ${openNav ? 'translate-x-0' : '-translate-x-full'}`}
+            >
+                {/* Logo in Drawer */}
+                <h1 className="text-[27px] font-bold text-[#C087BF]">
+                    &lt;<span className="text-lime-500">T</span>
+                    <span className="text-[#C087BF]">P</span>
+                    <span className="text-lime-500">P</span>/&gt;
+                </h1>
+
+                {/* Mobile Navigation Links */}
+                <ul className='block pt-8 space-y-4'>
+                    {navLinks.map(({ to, label }) => (
+                        <li key={to} className='border-b border-[#B1C98D] pb-2'>
+                            <NavLink
+                                to={to}
+                                onClick={ToggleNavBar}
+                                className={({ isActive }) => isActive ? activeClass : inactiveClass}
+                            >
+                                {label}
+                            </NavLink>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </>
     );
 };
