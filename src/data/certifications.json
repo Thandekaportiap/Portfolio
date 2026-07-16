@@ -40,7 +40,35 @@
             "date": "August 2023",
             "link": "https://www.freecodecamp.org/certification/Thandekaportiap/responsive-web-design",
             "description": "Focuses on responsive web design, including creating flexible layouts, using media queries, and building mobile-first websites."
-          }
+          },
+        {
+    "title": "Introduction to Mobile App Development",
+    "issuer": "IBM",
+    "date": "April 2026",
+    "link": "https://www.coursera.org/account/accomplishments/certificate/KZM71E7GPU37",
+    "description": "Introduces the mobile app development ecosystem, covering iOS, Android, and cross-platform frameworks like Swift, Kotlin, Flutter, and React Native, along with IDEs and testing tools used in the field."
+  },
+  {
+    "title": "Introduction to Software Engineering",
+    "issuer": "IBM",
+    "date": "April 2026",
+    "link": "https://www.coursera.org/account/accomplishments/verify/HOHJKULS8K5S",
+    "description": "Covers foundational software engineering concepts including the software development lifecycle, Agile and Scrum methodologies, and core programming and architecture principles."
+  },
+  {
+    "title": "GenAI Course for Software Engineers",
+    "issuer": "WeThinkCode_",
+    "date": "April 2026",
+    "link": "",
+    "description": "Covers AI-assisted coding, debugging, documentation, code review, and prompt engineering templates."
+  },
+  {
+    "title": "Get Started with Android App Development",
+    "issuer": "SkillUp",
+    "date": "May 2026",
+    "link": "https://www.coursera.org/account/accomplishments/verify/VG2WCXZEJETE",
+    "description": "Hands-on introduction to Android app development using Android Studio, covering UI design and interactivity, culminating in a fitness tracker app project."
+  }
       
   ]
   
