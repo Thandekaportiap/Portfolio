@@ -98,6 +98,17 @@ const projects = [
   link: 'https://react-weather-app-swart-chi.vercel.app/',
 },
 
+{
+  id: 'roots-and-fade-studio',
+  title: 'Roots & Fade Studio',
+  description:
+    'A full-featured website for a fictional barber-and-braid studio, built as a junior full-stack practical assessment. Features a complete booking system with live availability, Google and Apple Calendar integration tied to the exact appointment selected, a promo popup, and full Terms and Conditions.',
+  stack: 'React.js, Vite',
+  image: require('../assets/roots-and-fade.png'),
+  alt: 'Roots & Fade Studio',
+  link: 'https://roots-and-fade.vercel.app/',
+},
+
 ];
 
 const Work = () => {
