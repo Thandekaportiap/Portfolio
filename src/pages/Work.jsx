@@ -5,6 +5,8 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { viewport, slideIn, stagger, popIn } from '../components/animations';
 
 const projects = [
   {
@@ -124,6 +126,8 @@ const Work = () => {
   const [newComment, setNewComment] = useState('');
   const navigate = useNavigate();
 
+  const { scrollYProgress } = useScroll();
+const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 20 });
 
 
   useEffect(() => {
@@ -159,69 +163,98 @@ const Work = () => {
     setNewComment('');
   };
 
-  return (
-    <div className="container px-4 py-12 mx-auto">
-    <p className="mb-12 text-3xl font-semibold text-center">My Projects</p>
-
-    <button className="btn btn-branding-outline bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors mb-4" onClick={() => navigate('/mobilework')}>
-      See a Mobile Project
-    </button>
+ return (
+  <div className="container px-4 py-12 mx-auto">
+    {/* Scroll progress bar */}
+    <motion.div
+      className="fixed top-0 left-0 right-0 h-1 bg-[#B1C98D] origin-left z-50"
+      style={{ scaleX: progress }}
+    />
 
     {projects.map((project, index) => (
-      <div
+      <motion.div
         key={project.id}
-        className={`flex flex-col items-center mb-12 ${
-          index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-        }`}
-        data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+        className={`flex flex-col items-center mb-12 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+        variants={slideIn(index % 2 === 0 ? 'left' : 'right')}
+        initial="hidden"
+        whileInView="show"
+        viewport={viewport}
       >
-        <div className="hidden md:w-1/2 md:block">
-          <img
+        {/* Image with zoom-on-hover inside a clipped frame */}
+        <div className="hidden md:w-1/2 md:block overflow-hidden rounded-lg shadow-lg">
+          <motion.img
             src={project.image}
             alt={project.alt}
-            className="w-full h-auto rounded-lg shadow-lg"
-            data-aos="zoom-in"
+            className="w-full h-auto"
+            whileHover={{ scale: 1.08 }}
+            transition={{ duration: 0.5 }}
           />
         </div>
+
         <div className="p-4 mt-8 text-center md:w-1/2 md:text-left md:mt-0">
           <h2 className="mb-5 text-3xl font-bold">{project.title}</h2>
           <p className="mb-5 text-lg">{project.description}</p>
-          <a
-            href={project.link}
-            className="btn btn-branding-outline bg-transparent border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors"
+
+          {/* Tech stack as animated chips instead of plain text */}
+          <motion.div
+            className="flex flex-wrap gap-2 justify-center md:justify-start my-6"
+            variants={stagger(0.07)}
+            initial="hidden"
+            whileInView="show"
+            viewport={viewport}
           >
-            Learn More
-          </a>
-          <p className="my-8">Built with {project.stack}</p>
-          <div className="flex items-center gap-4">
-          <div>
-  <button
-    onClick={() => handleLike(project.id)}
-    className="flex items-center px-4 py-2 bg-red-500 text-white rounded hover:bg-blue-600"
-  >
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      className="w-5 h-5 mr-1"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
-      />
-    </svg>
-    Like ({likes[project.id] || 0})
-  </button>
-</div>
+            {project.stack.split(', ').map((tech) => (
+              <motion.span
+                key={tech}
+                variants={popIn}
+                className="px-3 py-1 text-sm rounded-full border border-[#B1C98D] text-[#B1C98D]"
+              >
+                {tech}
+              </motion.span>
+            ))}
+          </motion.div>
 
+          <div className="flex items-center gap-4 justify-center md:justify-start">
+            <motion.a
+              href={project.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn border border-[#B1C98D] hover:bg-[#B1C98D] text-[#B1C98D] hover:text-white font-semibold py-2 px-4 rounded transition-colors"
+            >
+              Learn More
+            </motion.a>
 
-           
+            {/* Like button with heart pop and counter flip */}
+            <motion.button
+              onClick={() => handleLike(project.id)}
+              whileTap={{ scale: 0.9 }}
+              className="flex items-center px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+            >
+              <motion.span
+                key={likes[project.id] || 0}
+                initial={{ scale: 1.8 }}
+                animate={{ scale: 1 }}
+                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+                className="mr-2"
+              >
+                ❤️
+              </motion.span>
+              <AnimatePresence mode="popLayout">
+                <motion.span
+                  key={likes[project.id] || 0}
+                  initial={{ y: 10, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -10, opacity: 0 }}
+                >
+                  {likes[project.id] || 0}
+                </motion.span>
+              </AnimatePresence>
+            </motion.button>
           </div>
         </div>
-      </div>
+      </motion.div>
     ))}
   </div>
 );

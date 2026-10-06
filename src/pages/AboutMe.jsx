@@ -5,6 +5,7 @@ import 'aos/dist/aos.css';
 import { motion } from 'framer-motion';
 import { FaJs, FaReact, FaNodeJs, FaDatabase, FaHtml5, FaCss3Alt, FaGitAlt, FaMobileAlt, FaBootstrap, FaFigma } from 'react-icons/fa';
 import { SiTailwindcss, SiFirebase, SiExpo, SiPostman } from 'react-icons/si';
+import { viewport, fadeUp, slideIn, stagger, popIn } from '../components/animations';
 
 
 const Fullstack = require('../assets/Tpp.jpg');
@@ -52,6 +53,8 @@ const AboutMe = () => {
       {/* Text Section */}
       <div className="mb-8 md:w-1/2 md:mb-0" data-aos="fade-right">
         <div className="about-section-content px-4">
+
+          
         <motion.h1
   className="mb-5 text-4xl font-bold text-transparent bg-clip-text gradient-animation bg-gradient-to-r from-indigo-600 via-pink-600 to-purple-600"
   initial={{ opacity: 0, y: -50 }}
